@@ -9,7 +9,7 @@ import 'package:kisiler_uygulamasi_dio/model/kisiler_cevap.dart';
 
 class KisilerRepository {
   List<Kisiler> parseKisilerCevap(String cevap) {
-    return KisilerCevap.fromJson(json.decode(cevap)).kisiler;
+    return KisilerCevap.fromJson(json.decode(cevap)).kisiler; //listemiz elimize ulaştı bu sayede
   }
 
   Future<void> kisiKayit(String ad, int kisiTel) async {
@@ -22,7 +22,7 @@ class KisilerRepository {
   Future<void> guncelle(int kisiId, String kisiAd, String kisiTel) async {
      var url = "http://kasimadalan.pe.hu/kisiler/update_kisiler.php";
     var veri = {'kisi_id':kisiId,'kisi_ad': kisiAd, "kisi_tel": kisiTel};
-    var cevap = await Dio().post(url, data: FormData.fromMap(veri));
+    var cevap = await Dio().post(url, data: FormData.fromMap(veri)); //veriyi data formatında gönderiyoruz
     print("Kişi Güncelle : ${cevap.data.toString()}");
   }
 
